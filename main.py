@@ -1,3 +1,4 @@
 import pandas as pd
 
-print("hello world")
+matches = pd.read_csv("soccer-matches.csv", index_col=0)
+print(matches.head())
