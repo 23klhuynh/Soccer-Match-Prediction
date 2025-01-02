@@ -48,12 +48,13 @@ new_columns = [f"{c}_rolling" for c in columns]
 matches_rolling = matches.groupby("Team").apply(lambda x: rolling_averages(x, columns, new_columns))
 matches_rolling = matches_rolling.reset_index(drop=True)
 
+model = RandomForestClassifier(n_estimators=55, min_samples_split=20, random_state=1)
+
 #---Model Training and Evaluation---
 def make_predictions(data, predictors, target_col='target'):
     train = data[data["Date Time (US Eastern)"] <= '2024-01-01']
     test = data[data["Date Time (US Eastern)"] > '2024-01-01']
     
-    model = RandomForestClassifier(n_estimators=55, min_samples_split=20, random_state=1)
     model.fit(train[predictors], train[target_col])
     
     preds = model.predict(test[predictors])
@@ -112,7 +113,7 @@ def predict_next_match(home_team, away_team, date_time):
     }])
     match_data = match_data[predictors]
     
-    prediction = rf.predict(match_data)
+    prediction = model.predict(match_data)
     result = "Win" if prediction[0] == 1 else "Loss" if prediction[0] == 0 else "Draw"
 
     print(f"Prediction for {home_team} vs {away_team}: {result}")
