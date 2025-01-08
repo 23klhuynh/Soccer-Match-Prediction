@@ -18,5 +18,3 @@ This is my first project utilizing Jupyter Notebook, and it has been a great opp
 * The model performs accurately when predicting outcomes for the top half of the table teams such as Manchester City, Liverpool, Arsenal, Chelsea, Manchester United, Tottenham Hotspur, Newcastle United, Aston Villa, Brighton & Hove Albion, and West Ham United. These teams have a long history and competitiveness at the highest level, resulting in the model making better predictions.
 
 * Predictions are less reliable for teams in the bottom half of the table due to the unpredictability of teams fighting against relegation. These teams often show erratic performance when fighting for better positions.
-
-## How to use the application
